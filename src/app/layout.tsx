@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono as GeistMono } from 'next/font/google'
+import { Rubik, Sora } from 'next/font/google'
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const soraSans = Sora({
+  variable: '--font-sora-sans',
   subsets: ['latin'],
 })
 
-const geistMono = GeistMono({
-  variable: '--font-geist-mono',
+const rubikSans = Rubik({
+  variable: '--font-rubik-sans',
   subsets: ['latin'],
 })
 
@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${soraSans.variable} ${rubikSans.variable} antialiased`}
       >
         {children}
       </body>
