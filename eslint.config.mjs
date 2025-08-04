@@ -18,6 +18,7 @@ const eslintConfig = [
     'plugin:prettier/recommended',
   ),
   {
+    ignores: ['src/generated/prisma/**/*'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
