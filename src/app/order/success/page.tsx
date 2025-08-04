@@ -4,6 +4,7 @@ import { getOrderBySessionId } from '@/app/actions/getOrderBySessionId'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { MainContentSection } from '@/components/home/main-content-section'
+import { LoadingPage } from '@/components/loading-page'
 import { Button } from '@/components/ui/button'
 import { Order } from '@/generated/prisma'
 import { CopyIcon } from '@hugeicons/core-free-icons'
@@ -71,7 +72,7 @@ export default function OrderSuccessPage() {
               <Footer />
             </div>
           ) : (
-            <p className="text-neutral-600n text-lg">Loading...</p>
+            <LoadingPage className="h-[calc(100vh-4rem-3.25rem-3.25rem)] min-h-0" />
           )}
         </div>
       </div>
