@@ -4,12 +4,11 @@ import { HeroSection } from '@/components/home/hero-section'
 import { LastSeenSection } from '@/components/home/last-seen-section'
 import { MainContentSection } from '@/components/home/main-content-section'
 import { YouMayAlsoLikeSection } from '@/components/home/you-may-also-like-section'
-import { getProduct } from '@/hooks/getProduct'
-import { PRODUCT_IDS } from '@/lib/constants'
+import { productData } from '@/lib/mock-data'
 import { notFound } from 'next/navigation'
 
 export default async function Home() {
-  const featuredProduct = await getProduct(PRODUCT_IDS.GOOGLE_PLAY_GIFT_CARD)
+  const featuredProduct = productData
 
   if (!featuredProduct) {
     return notFound()
