@@ -1,10 +1,10 @@
 import { ProductCard } from '@/components/product-card'
 import { Carousel } from '@/components/ui/carousel'
-import { mockYouMayAlsoLikeProducts } from '@/lib/mock-data'
+import { getYouMayAlsoLikeProducts } from '@/hooks/getYouMayAlsoLikeProducts'
 import { cn } from '@/lib/utils'
 
 export const YouMayAlsoLikeSection = async () => {
-  const products = mockYouMayAlsoLikeProducts
+  const products = await getYouMayAlsoLikeProducts()
 
   return (
     <div className="flex w-full max-w-[75rem] flex-col gap-y-4">

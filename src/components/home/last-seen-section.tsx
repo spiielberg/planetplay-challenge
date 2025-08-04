@@ -1,10 +1,10 @@
 import { ProductCard } from '@/components/product-card'
 import { Carousel } from '@/components/ui/carousel'
-import { mockLastSeenProducts } from '@/lib/mock-data'
+import { getLastSeenProducts } from '@/hooks/getLastSeenProducts'
 import { cn } from '@/lib/utils'
 
 export const LastSeenSection = async () => {
-  const products = mockLastSeenProducts
+  const products = await getLastSeenProducts()
 
   return (
     <div className="flex w-full max-w-[75rem] flex-col gap-y-4">
