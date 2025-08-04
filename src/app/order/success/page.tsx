@@ -1,12 +1,12 @@
 'use client'
 
-import { getOrderBySessionId } from '@/app/actions/getOrderBySessionId'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { MainContentSection } from '@/components/home/main-content-section'
 import { LoadingPage } from '@/components/loading-page'
 import { Button } from '@/components/ui/button'
 import { Order } from '@/generated/prisma'
+import { getOrderBySessionId } from '@/hooks/getOrderBySessionId'
 import { CopyIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { useSearchParams } from 'next/navigation'
@@ -23,7 +23,7 @@ export default function OrderSuccessPage() {
       return
     }
 
-    const data = await getOrderBySessionId({ sessionId })
+    const data = await getOrderBySessionId(sessionId)
 
     setOrderData(data)
   }, [sessionId])
@@ -38,9 +38,9 @@ export default function OrderSuccessPage() {
     <div className="min-h-screen bg-black">
       <Header />
 
-      <div className="flex w-full flex-col items-center pt-16">
-        <div className="flex w-full max-w-[75rem] flex-col gap-y-8 px-4 py-[3.25rem]">
-          {orderData ? (
+      {orderData ? (
+        <div className="flex w-full flex-col items-center pt-16">
+          <div className="flex w-full max-w-[75rem] flex-col gap-y-8 px-4 py-[3.25rem]">
             <div className="flex w-full flex-col items-center gap-y-8 md:items-start">
               <p className="font-rubik text-center text-2xl font-extrabold text-white md:text-left">
                 Order Successful
@@ -71,11 +71,11 @@ export default function OrderSuccessPage() {
 
               <Footer />
             </div>
-          ) : (
-            <LoadingPage className="h-[calc(100vh-4rem-3.25rem-3.25rem)] min-h-0" />
-          )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <LoadingPage />
+      )}
     </div>
   )
 }

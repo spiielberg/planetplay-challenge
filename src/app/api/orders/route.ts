@@ -3,6 +3,37 @@ import { stripe } from '@/lib/stripe'
 import { generateRedeemCode } from '@/utils/generateRedeemCode'
 import { NextRequest, NextResponse } from 'next/server'
 
+export async function GET(request: NextRequest) {
+  try {
+    const url = new URL(request.url)
+    const sessionId = url.searchParams.get('session_id')
+
+    if (!sessionId) {
+      return NextResponse.json(
+        { error: 'Session ID is required' },
+        { status: 400 },
+      )
+    }
+
+    const order = await prisma.order.findFirst({
+      where: { stripeSessionId: sessionId },
+      include: { product: true },
+    })
+
+    if (!order) {
+      return NextResponse.json({ error: 'Order not found' }, { status: 404 })
+    }
+
+    return NextResponse.json(order)
+  } catch (error) {
+    console.error('Error fetching order:', error)
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 },
+    )
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
