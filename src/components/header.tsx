@@ -7,26 +7,29 @@ import {
 } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const Header = () => {
   return (
     <div className="fixed inset-x-0 top-0 z-10 flex justify-center bg-black/80 px-4 py-2 md:px-0 md:backdrop-blur-xs">
       <div className="flex w-full max-w-[75rem] items-center justify-between gap-x-4 md:mx-4">
-        <Image
-          src="/assets/pp-logo-sm.svg"
-          alt="Planetplay"
-          width={64}
-          height={48}
-          className="cursor-pointer md:hidden"
-        />
+        <Link href="/">
+          <Image
+            src="/assets/pp-logo-sm.svg"
+            alt="Planetplay"
+            width={64}
+            height={48}
+            className="cursor-pointer md:hidden"
+          />
 
-        <Image
-          src="/assets/pp-logo.svg"
-          alt="Planetplay"
-          width={264}
-          height={48}
-          className="hidden cursor-pointer md:block"
-        />
+          <Image
+            src="/assets/pp-logo.svg"
+            alt="Planetplay"
+            width={264}
+            height={48}
+            className="hidden cursor-pointer md:block"
+          />
+        </Link>
 
         <Input
           placeholder="Search by title, genre or developer"
