@@ -10,6 +10,9 @@ const compat = new FlatCompat({
 })
 
 const eslintConfig = [
+  {
+    ignores: ['src/generated/prisma/**/*'],
+  },
   ...compat.extends(
     'next/core-web-vitals',
     'next/typescript',
@@ -18,7 +21,6 @@ const eslintConfig = [
     'plugin:prettier/recommended',
   ),
   {
-    ignores: ['src/generated/prisma/**/*'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
